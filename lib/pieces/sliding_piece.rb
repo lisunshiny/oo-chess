@@ -1,0 +1,4 @@
+class SlidingPiece < Piece
+
+
+end
