@@ -1,17 +1,18 @@
 class Pawn < Piece
-  BLACK_SLIDE_DIR = [0, 1]
-  BLACK_TAKE_DELTAS = [[1, 1], [-1, 1]]
-  WHITE_TAKE_DELTAS = [[-1, -1], [1, -1]]
-  WHITE_SLIDE_DIR = [0, -1]
+  BLACK_SLIDE_DIR = [0, -1]
+  BLACK_TAKE_DELTAS = [[-1, 1], [-1, -11]]
+  WHITE_TAKE_DELTAS = [[1, 1], [1, -1]]
+  WHITE_SLIDE_DIR = [0, 1]
 
-  def initialize(pos, board, coloro)
-    super(pos, board, color)
-    first_move = true
+  attr_accessor :first_move
+
+  def initialize(current_pos, board, color)
+    @first_move = true
+    super(current_pos, board, color)
   end
 
   def moves
-    move_dirs
-
+    take_moves + slide_moves
   end
 
   def slide_dir
@@ -30,7 +31,6 @@ class Pawn < Piece
 
       moves << possible_move if can_take?(possible_move)
     end
-
     moves
   end
 
@@ -45,14 +45,14 @@ class Pawn < Piece
   def slide_moves
     moves = []
     possible_move = add(slide_dir, current_pos)
+    while can_move_to?(possible_move)
+      moves << possible_move
 
-    while true
-      break unless can_move_to?(pos)
+      break if self.first_move == false
 
-
+      possible_move = add(slide_dir, possible_move)
+      self.first_move = false
+    end
+    moves
   end
-
-
-
-
 end
