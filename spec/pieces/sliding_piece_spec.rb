@@ -11,6 +11,11 @@ describe Queen do
     expect(move_dirs.uniq.length).to be(8)
   end
 
+  context "#moves" do
+
+    it "moves to the edge of the board"
+
+
 end
 
 describe Bishop do
