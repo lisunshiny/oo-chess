@@ -29,4 +29,19 @@ class Piece
     [ pos[0] + dir[0], pos[1] + dir[1] ]
   end
 
+  def dup(board_dup)
+    self.class.new(current_pos, board_dup, color)
+  end
+
+  def move_into_check?(pos)
+    board_dup = board.dup
+    board_dup.move(current_pos, pos)
+
+    board_dup.in_check?(color)
+  end
+
+  def valid_moves
+    moves.reject { |pos| move_into_check?(pos) }
+  end
+
 end

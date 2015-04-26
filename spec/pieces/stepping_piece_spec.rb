@@ -16,7 +16,7 @@ describe SteppingPiece do
 
   describe Knight do
 
-    context "#move" do
+    context "#moves" do
       it "does not go out of bounds" do
         knight = Knight.new([7,7], Board.new, :black)
         expect(knight.moves).to match_array([[6,5], [5,6]])
@@ -28,7 +28,6 @@ describe SteppingPiece do
         king = King.new([2,4], board, :white)
 
         expect(knight.moves).to_not include([2,4])
-
       end
     end
   end
