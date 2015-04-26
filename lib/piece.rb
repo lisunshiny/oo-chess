@@ -6,6 +6,7 @@ class Piece
     @current_pos = current_pos
     @board = board
     @color = color
+    @board[current_pos] = self
   end
 
   def moves
@@ -21,7 +22,7 @@ class Piece
 
   def can_move_to?(pos)
     on_board?(pos) &&
-      (empty_spot?(pos) || board[pos].color == color)
+      (empty_spot?(pos) || board[pos].color != color)
   end
 
   def add(pos, dir)

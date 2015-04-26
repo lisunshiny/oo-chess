@@ -30,7 +30,7 @@ describe Queen do
   before(:each) do
     @board = Board.new
     @queen = Queen.new([0,0], @board, :black)
-    @board[[4,4]] = @queen
+    @board[[0,0]] = @queen
   end
 
   it "has appropriate move_dirs" do
