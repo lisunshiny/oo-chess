@@ -1,4 +1,5 @@
 require 'matrix'
+require 'byebug'
 
 class SlidingPiece < Piece
   DIAGONAL_DIRS = [ [-1, -1], [1, 1], [-1, 1], [1, -1]]
@@ -6,23 +7,26 @@ class SlidingPiece < Piece
 
   def moves
     move_dirs.inject([]) do |moves, dir|
-      moves << valid_moves_in_this_dir(dir)
+      moves + moves_for(dir)
     end
   end
 
   def can_move_to?(pos)
-    empty_spot?(pos) || board[pos].color == color
+    on_board?(pos) &&
+      (empty_spot?(pos) || board[pos].color == color)
   end
 
-  def valid_moves_in_this_dir(dir)
-    next_move_vector = Vector[dir] + Vector[pos]
+  def moves_for(dir)
     dir_moves = []
-
-    while can_move_to?(next_move_vector)
-      dir_moves << next_move_vector.to_a
-      next_move_vector += Vector[dir]
+    next_spot = add(current_pos, dir)
+    while can_move_to?(next_spot)
+      dir_moves << next_spot
+      next_spot = add(next_spot, dir)
     end
-
     dir_moves
+  end
+
+  def add(pos, dir)
+    [ pos[0] + dir[0], pos[1] + dir[1] ]
   end
 end

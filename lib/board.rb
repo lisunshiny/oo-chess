@@ -11,6 +11,6 @@ class Board
   end
 
   def []=(pos, piece)
-    grid[pos] = piece
+    grid[pos[0]][pos[1]] = piece
   end
 end
