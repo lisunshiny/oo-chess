@@ -6,9 +6,4 @@ describe Piece do
     piece = Piece.new
     expect { piece.moves }.to_not raise_error
   end
-
-  
-
-
-
 end
