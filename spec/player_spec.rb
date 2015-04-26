@@ -1,8 +1,8 @@
 describe Player do
   before(:each) do
     @board = Board.new(false)
-    @player = Player.new(@board, :white)
-    @player2 = Player.new(@board, :black)
+    @player = Player.new(:white, @board)
+    @player2 = Player.new(:black, @board)
   end
 
   it "rejects invalid inputs" do

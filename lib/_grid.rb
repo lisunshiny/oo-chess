@@ -29,7 +29,8 @@ module Grid
   end
 
   def render_grid
-    rendering = "  A B C D E F G H"
+    letters = "  A B C D E F G H"
+    rendering = letters.dup
     descending_nums = (1..Board::BOARD_SIZE).to_a.reverse
     descending_nums.each do |col|
       rendering << "\n#{col} "
@@ -41,8 +42,10 @@ module Grid
         rendering << spot_render.send(color)
 
       end
+      rendering << " #{col}"
+
     end
-    rendering
+    rendering << "\n" + letters
   end
 
   def display_grid

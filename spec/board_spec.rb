@@ -69,5 +69,24 @@ describe Board do
       expect(@board.checkmate?(:white)).to be_falsey
     end
 
+    it "detects another checkmate" do
+      board = Board.new
+
+      Rook.new([1,1], board, :black)
+      Rook.new([4, 0], board, :black)
+      Bishop.new([5, 3], board, :black)
+      pawn = Pawn.new([6, 1], board, :white)
+      king = King.new([6, 0], board, :white)
+      rook =Rook.new([7, 0], board, :white)
+
+      expect(board.checkmate?(:white)).to be_truthy
+      expect(board.checkmate?(:black)).to be_falsey
+    end
+
+    it "differentiates with check" do
+      @board.move([5,6], [4,6])
+      expect(@board.checkmate?(:black)).to be_falsey
+    end
+
   end
 end

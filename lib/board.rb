@@ -66,11 +66,12 @@ class Board
 
   def checkmate?(color)
     return false unless in_check?(color)
-    grid.flatten.any? do |piece|
-      next if piece.nil?
-
-      piece.valid_moves
+    # byebug
+    grid.flatten.each do |piece|
+      next if piece.nil? || piece.color != color
+      return false if !piece.valid_moves.empty?
     end
+    true
   end
 
   include Grid

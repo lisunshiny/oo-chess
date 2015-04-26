@@ -1,7 +1,7 @@
 class Pawn < Piece
   BLACK_SLIDE_DIR = [0, -1]
-  BLACK_TAKE_DELTAS = [[-1, 1], [-1, -11]]
-  WHITE_TAKE_DELTAS = [[1, 1], [1, -1]]
+  BLACK_TAKE_DELTAS = [[1, -1], [-1, -1]]
+  WHITE_TAKE_DELTAS = [[1, 1], [-1, 1]]
   WHITE_SLIDE_DIR = [0, 1]
 
   attr_accessor :first_move

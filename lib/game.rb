@@ -17,7 +17,7 @@ class Game
       current_player.play_turn
       current_player = (current_player == players[0] ? players[1] : players[0])
     end
-
+    board.display_board
     return "Good game. #{current_player.color.capitalize} loses."
   end
 end

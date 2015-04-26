@@ -17,6 +17,7 @@ class SlidingPiece < Piece
 
     while can_move_to?(possible_move)
       dir_moves << possible_move
+      break unless empty_spot?(possible_move)
       possible_move = add(possible_move, dir)
     end
 
