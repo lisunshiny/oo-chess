@@ -60,4 +60,17 @@ class Board
 
     board_dup
   end
+
+  def checkmate?(color)
+    return false unless in_check?(color)
+
+    grid.flatten.any? do |piece|
+      next if piece.nil?
+
+      piece.valid_moves
+    end
+  end
+
+  include Grid
+
 end

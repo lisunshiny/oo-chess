@@ -42,4 +42,8 @@ class Piece
     moves.reject { |pos| move_into_check?(pos) }
   end
 
+  def inspect
+    "#{self.class} at #{self.current_pos}"
+  end
+
 end

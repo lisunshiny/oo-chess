@@ -43,4 +43,13 @@ describe Board do
       expect(@board.in_check?(:white)).to be_falsey
     end
   end
+
+  context "#populate_grid" do
+    it "can start with a populated board" do
+      board = Board.new(false)
+      expect(board.grid).to include(8)
+    end
+
+
+  end
 end

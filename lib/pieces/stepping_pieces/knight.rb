@@ -9,4 +9,8 @@ class Knight < SteppingPiece
       [-2, -1],
       [-1, -2] ]
   end
+
+  def render
+    color == :black ? "♞" : "♘"
+  end
 end
