@@ -13,11 +13,11 @@ class SlidingPiece < Piece
 
   def moves_for(dir)
     dir_moves = []
-    next_spot = add(current_pos, dir)
+    possible_move = add(current_pos, dir)
 
-    while can_move_to?(next_spot)
-      dir_moves << next_spot
-      next_spot = add(next_spot, dir)
+    while can_move_to?(possible_move)
+      dir_moves << possible_move
+      possible_move = add(possible_move, dir)
     end
 
     dir_moves
