@@ -11,22 +11,15 @@ class SlidingPiece < Piece
     end
   end
 
-  def can_move_to?(pos)
-    on_board?(pos) &&
-      (empty_spot?(pos) || board[pos].color == color)
-  end
-
   def moves_for(dir)
     dir_moves = []
     next_spot = add(current_pos, dir)
+
     while can_move_to?(next_spot)
       dir_moves << next_spot
       next_spot = add(next_spot, dir)
     end
-    dir_moves
-  end
 
-  def add(pos, dir)
-    [ pos[0] + dir[0], pos[1] + dir[1] ]
+    dir_moves
   end
 end

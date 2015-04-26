@@ -19,4 +19,13 @@ class Piece
     pos.all?{ |loc| loc < 8 && loc > -1 }
   end
 
+  def can_move_to?(pos)
+    on_board?(pos) &&
+      (empty_spot?(pos) || board[pos].color == color)
+  end
+
+  def add(pos, dir)
+    [ pos[0] + dir[0], pos[1] + dir[1] ]
+  end
+
 end
