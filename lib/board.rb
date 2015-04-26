@@ -29,7 +29,14 @@ class Board
 
     raise "There's nothing to move." if piece.nil?
     raise "Piece can't move there." unless piece.moves.include?(end_pos)
-    # raise "Cannot move into check." if piece.move_into_check?(end_pos)
+    raise "Cannot move into check." if piece.move_into_check?(end_pos)
+
+    move!(start_pos, end_pos)
+  end
+
+  def move!(start_pos, end_pos)
+
+    piece = self[start_pos]
 
     self[end_pos], self[start_pos] = self[start_pos], self[end_pos]
     piece.current_pos = end_pos
@@ -46,7 +53,7 @@ class Board
 
     BOARD_SIZE.times do |row|
       BOARD_SIZE.times do |col|
-        next if board_dup[[row, col]].nil?
+        next if self[[row, col]].nil?
         board_dup[[row, col]] = self[[row,col]].dup(board_dup)
       end
     end

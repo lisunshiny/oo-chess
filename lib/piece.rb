@@ -9,8 +9,6 @@ class Piece
     @board[current_pos] = self
   end
 
-  def moves
-  end
 
   def empty_spot?(pos)
     !board[pos]
@@ -35,7 +33,7 @@ class Piece
 
   def move_into_check?(pos)
     board_dup = board.dup
-    board_dup.move(current_pos, pos)
+    board_dup.move!(current_pos, pos)
 
     board_dup.in_check?(color)
   end
