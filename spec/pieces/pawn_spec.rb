@@ -15,7 +15,7 @@ describe Pawn do
   end
 
   it "is blocked by a piece" do
-    knight = Knight.new([1, 2], @board, :black)
+    knight = Knight.new([1, 2], @board, :white)
     expect(@pawn.moves).to match_array([[2, 2]])
   end
 

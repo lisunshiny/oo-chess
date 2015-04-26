@@ -7,23 +7,22 @@ module Grid
       generate_pawn_row!(color)
       generate_piece_row!(color)
     end
-    byebug
     nil
   end
 
   def generate_pawn_row!(color)
-    row = ( color == :black ? 6 : 1 )
-    Board::BOARD_SIZE.times do |col|
+    col = ( color == :black ? 6 : 1 )
+    Board::BOARD_SIZE.times do |row|
       Pawn.new([row, col], self, color)
     end
     nil
   end
 
   def generate_piece_row!(color)
-    row = (color == :black ? 7 : 0)
+    col = (color == :black ? 7 : 0)
     type = [Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook]
 
-    type.each_with_index do |piece, col|
+    type.each_with_index do |piece, row|
       piece.new([row, col], self, color)
     end
     nil
@@ -32,11 +31,11 @@ module Grid
   def render_grid
     rendering = "  A B C D E F G H"
     descending_nums = (1..Board::BOARD_SIZE).to_a.reverse
-    descending_nums.each do |row|
-      rendering << "\n#{row} "
+    descending_nums.each do |col|
+      rendering << "\n#{col} "
 
-      Board::BOARD_SIZE.times do |col|
-        spot_render = self[[row-1,col]].nil? ? "  " : " #{self[[row-1,col]].render}"
+      Board::BOARD_SIZE.times do |row|
+        spot_render = self[[row, col - 1]].nil? ? "  " : " #{self[[row,col - 1]].render}"
         color = (row + col - 1).even? ? :on_light_magenta : :on_light_white
 
         rendering << spot_render.send(color)

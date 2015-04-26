@@ -47,9 +47,27 @@ describe Board do
   context "#populate_grid" do
     it "can start with a populated board" do
       board = Board.new(false)
-      expect(board.grid).to include(8)
+      board2 = Board.new
+      expect(board2.grid.uniq.count).to eq(1)
+      expect(board.grid.uniq.count).to eq(8)
     end
 
+  end
+
+  context "#checkmate" do
+    before(:each) do
+
+      @board = Board.new(false)
+      @board.move([4, 1], [4, 3])
+      @board.move([5, 0], [2, 3])
+      @board.move([3, 0], [7, 4])
+      @board.move([7, 4], [5, 6])
+    end
+
+    it "detects checkmate" do
+      expect(@board.checkmate?(:black)).to be_truthy
+      expect(@board.checkmate?(:white)).to be_falsey
+    end
 
   end
 end
