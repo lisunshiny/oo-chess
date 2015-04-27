@@ -8,4 +8,4 @@ I had a lot of fun making this object-oriented chess game!
   - Using errors and rescuing them to their full advantage.
   - Colorize gem for clean UI.
 
-  ![screenshot][./assets/screenshot.png]
+  ![screenshot(assets/screenshot.png)
