@@ -1,5 +1,5 @@
 # Chess!
-
+![screenshot](assets/screenshot.png)
 I had a lot of fun making this object-oriented chess game!
 
 ####It features:
@@ -7,5 +7,3 @@ I had a lot of fun making this object-oriented chess game!
   - RSpec tests on pieces and the board with mock user input.
   - Using errors and rescuing them to their full advantage.
   - Colorize gem for clean UI.
-
-  ![screenshot](assets/screenshot.png)
