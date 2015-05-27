@@ -13,13 +13,13 @@ class Player
 
     input = process_input(gets.chomp)
 
-    raise "Can't move this piece" unless board[input[0]].color == color
+    raise "Can't move this piece" unless board[input[0]] && board[input[0]].color == color
 
     board.move(*input)
 
-  # rescue StandardError => e
-  #   puts "Error: #{e.message}"
-  #   retry
+  rescue StandardError => e
+    puts "Error: #{e.message}"
+    retry
   end
 
   def translate_input(input)

@@ -1,5 +1,7 @@
+#!/usr/bin/env ruby
+
 require 'require_all'
-require_all 'lib'
+require_all '../lib'
 
 class Game
   attr_accessor :board, :players
@@ -20,4 +22,10 @@ class Game
     board.display_board
     return "Good game. #{current_player.color.capitalize} loses."
   end
+end
+
+
+if $PROGRAM_NAME == __FILE__
+  game = Game.new
+  game.play
 end
